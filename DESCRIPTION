@@ -7,7 +7,7 @@ Maintainer: The package maintainer <oleg@nexter83.ru>
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
 Imports:
-  httr (>= 1.3.1,
+  httr (>= 1.3.1),
   rjson (>= 0.2.15).
 License: What license is it under?
 Encoding: UTF-8
