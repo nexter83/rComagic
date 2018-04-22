@@ -3,7 +3,7 @@ getCampaigns <- function(
   userId = NULL,
   fields = NULL){
 
-fields <- c("name","id","status")
+
 fields <- if(is.null(fields)) {list("name","id","status")
   }else {as.list(fields) }
 
