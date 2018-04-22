@@ -1,4 +1,7 @@
-getCampaigns <- function(token = NULL,userId = NULL){
+getCampaigns <- function(
+  token = NULL,
+  userId = NULL,
+  fields = list("id","name","status")){
 campaigns <- content(POST("https://dataapi.uiscom.ru/v2.0",
                           body = toJSON(
                             list(
@@ -24,10 +27,7 @@ for (p in 1:page) {
                                   access_token=token,
                                   user_id=userId,
                                   offset = p,
-                                  fields = list(
-                                    "id",
-                                    "name",
-                                    "status"))
+                                  fields = fields)
                               )
                             )),"parsed", "application/json")
   CampaignComagicT <- do.call(rbind.data.frame,campaigns$result$data)
