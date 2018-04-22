@@ -9,6 +9,7 @@ Description: More about what it does (maybe more than one line)
 Imports:
   httr,
   rjson
+ Depends: httr, rjson
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
