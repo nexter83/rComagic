@@ -1,7 +1,14 @@
 getCampaigns <- function(
   token = NULL,
   userId = NULL,
-  fields = list("id","name","status")){
+  fields = NULL){
+
+fields <- c("name","id","status")
+fields <- if(is.null(fields)) {list("name","id","status")
+  }else {as.list(fields) }
+
+
+
 campaigns <- content(POST("https://dataapi.uiscom.ru/v2.0",
                           body = toJSON(
                             list(
@@ -10,7 +17,8 @@ campaigns <- content(POST("https://dataapi.uiscom.ru/v2.0",
                               method="get.campaigns",
                               params = list(
                                 access_token=token,
-                                user_id=userId)
+                                user_id=userId,
+                                fields = fields)
                             )
                           )),"parsed", "application/json")
 totlaItems <- campaigns$result$metadata$total_items
