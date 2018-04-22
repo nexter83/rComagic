@@ -29,8 +29,7 @@ totalItems <- Calls$result$metadata$total_items
 page <- floor(totalItems/1000)
 calls <- NULL
 for (p in 0:page) {
-  print(p)
-  Calls <- content(POST("https://dataapi.uiscom.ru/v2.0",
+   Calls <- content(POST("https://dataapi.uiscom.ru/v2.0",
                         body = toJSON(
                           list(
                             jsonrpc="2.0",
