@@ -12,6 +12,7 @@ getTags <-
                        )
                      )),"parsed", "application/json")
 
-tagComagic <- do.call(rbind.data.frame, tags$result$data)
+tagComagic <- as.data.frame(do.call(rbind.data.frame, tags$result$data),stringsAsFactors=F)
+
 return(tagComagic)
 }
