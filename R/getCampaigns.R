@@ -24,7 +24,7 @@ campaigns <- content(POST("https://dataapi.uiscom.ru/v2.0",
 totlaItems <- campaigns$result$metadata$total_items
 page <- ceiling(totlaItems/1000)
 CampaignComagic <- NULL
-for (p in 1:page) {
+for (p in 0:page) {
   campaigns <- content(POST("https://dataapi.uiscom.ru/v2.0",
                             body = toJSON(
                               list(
@@ -34,7 +34,7 @@ for (p in 1:page) {
                                 params = list(
                                   access_token=token,
                                   user_id=userId,
-                                  offset = p,
+                                  offset = p*1000,
                                   fields = fields)
                               )
                             )),"parsed", "application/json")

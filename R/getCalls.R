@@ -26,9 +26,10 @@ Calls <- content(POST("https://dataapi.uiscom.ru/v2.0",
                           )),"parsed", "application/json")
 
 totalItems <- Calls$result$metadata$total_items
-page <- ceiling(totalItems/1000)
+page <- floor(totalItems/1000)
 calls <- NULL
-for (p in 1:page) {
+for (p in 0:page) {
+  print(p)
   Calls <- content(POST("https://dataapi.uiscom.ru/v2.0",
                         body = toJSON(
                           list(
@@ -38,7 +39,7 @@ for (p in 1:page) {
                             params= list(
                               access_token=token,
                               user_id=userId,
-                              offset = p,
+                              offset = p*1000,
                               date_from = paste(date_from,"00:00:00",sep = " "),
                               date_till = paste(date_till,"00:00:00",sep = " "),
                               fields = fields)
